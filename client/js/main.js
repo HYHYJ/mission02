@@ -1,12 +1,3 @@
-/* 
-
-1. 클릭 이벤트 활성화
-2. nav 클릭시 배경 색상 변경
-3. 이미지 변경
-4. 텍스트 변경
-5. 함수 분리
-
-*/
 //? 1. 이벤트 처리 방식을 사용하여 클릭 이벤트를 걸어주세요.
 //? 1. 이벤트 위임
 //? 2. 반복문
@@ -19,6 +10,10 @@ const visualImage = getNode(".visual img");
 const body = getNode("body");
 const ul = getNode("ul");
 const nickName = getNode(".nickName");
+
+// let audio = document.createElement("audio");
+// navigation.appendChild(audio);
+let audioPlayer = new AudioPlayer(`./assets/audio/ember.m4a`);
 
 function handleSlider(e) {
   e.preventDefault();
@@ -72,6 +67,11 @@ function handleSlider(e) {
   function setNameText(node, value) {
     node.textContent = value;
   }
+  //! 음성 플레이
+  function handleAudio(value) {
+    audioPlayer = new AudioPlayer(value);
+    audioPlayer.play();
+  }
 
   //?  1. 배경색 변경 ( colorB의 기본값은 `#000` 으로 한다 )
   setBgColor(
@@ -96,6 +96,8 @@ function handleSlider(e) {
   //   li.classList.remove("is-active");
   // });
   // target.classList.add("is-active");
+  //? 5.오디오 변경
+  handleAudio(`./assets/audio/${data[index - 1].name}.m4a`);
 }
 
 navigation.addEventListener("click", handleSlider);
