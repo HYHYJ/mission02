@@ -43,7 +43,8 @@ function handleSlider(e) {
   target.src = `./assets/${data.name}.jpeg`;
   target.alt = data.alt;
   target.nickName = data.name;
-  //?  1. 배경색 변경 ( colorB의 기본값은 `#000` 으로 한다 )
+
+  //!. `setBgColor` 함수
   // elem.style.background = `linear-gradient(to bottom, 'colorA','colorB' ='#000');
 
   function setBgColor(node, colorA, colorB = "#000") {
@@ -51,7 +52,28 @@ function handleSlider(e) {
 
     node.style.background = `linear-gradient(to bottom, ${colorA}, ${colorB})`;
   }
+  //!. `setImage` 함수
+  function setImage(node, prop, value) {
+    if (typeof node === "string") {
+      node = getNode(node);
+    }
 
+    // 전달받은 prop의 타입이 string이 아니라면 Error!
+
+    if (typeof prop !== "string") {
+      throw new TypeError(
+        "setImage 함수의 두 번째 인수는 문자 타입 이어야 합니다."
+      );
+    }
+
+    node.setAttribute(prop, value);
+  }
+  //!setNameText 함수
+  function setNameText(node, value) {
+    node.textContent = value;
+  }
+
+  //?  1. 배경색 변경 ( colorB의 기본값은 `#000` 으로 한다 )
   setBgColor(
     body,
     // `linear-gradient(to bottom, ${color}.color[0], ${color}.color[1]);`
@@ -62,10 +84,11 @@ function handleSlider(e) {
     // )`
   );
   //? b. 이미지 변경
-  attr(visualImage, "src", `./assets/${data[index - 1].name}.jpeg`);
-  attr(visualImage, "alt", data[index - 1].alt);
+  setImage(visualImage, "src", `./assets/${data[index - 1].name}.jpeg`);
+  setImage(visualImage, "alt", data[index - 1].alt);
+
   //? 4. 비주얼이 변경되면 상단에 비주얼에 맞는 이름으로 변경해주세요.
-  nickName.textContent = data[index - 1].name;
+  setNameText(nickName, data[index - 1].name);
 
   //내가 선택한 li에게 is-active 클레스 넣기
 
@@ -73,7 +96,6 @@ function handleSlider(e) {
   //   li.classList.remove("is-active");
   // });
   // target.classList.add("is-active");
-  console.log(list);
 }
 
 navigation.addEventListener("click", handleSlider);
