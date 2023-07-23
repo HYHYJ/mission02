@@ -44,7 +44,6 @@ function handleSlider(e) {
   e.preventDefault();
 
   const target = e.target.closest("li");
-  console.log(target);
 
   if (!target) return;
 
