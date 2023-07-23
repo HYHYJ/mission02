@@ -82,7 +82,7 @@ function handleAudio(value) {
 }
 ```
 <br/>
-#### `handleSlider`  함수
+### `handleSlider`  함수
 navigattion 클릭하면 handleSlider 실행
 - 이미지와 색상의 데이터는 `data.js` 에서 불러옴
 - 각 li 항목들을 클릭하면 배경 색상과 메인 비주얼 이미지를 변경 
