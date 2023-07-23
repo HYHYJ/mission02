@@ -54,10 +54,6 @@ function handleSlider(e) {
 
   addClass(target, "is-active");
 
-  target.src = `./assets/${data.name}.jpeg`;
-  target.alt = data.alt;
-  target.nickName = data.name;
-
   //? 1. 배경색 변경 ( colorB의 기본값은 `#000` 으로 한다 )
   setBgColor(body, data[index - 1].color[0], data[index - 1].color[1]);
   //? 2. 이미지 변경
@@ -65,16 +61,9 @@ function handleSlider(e) {
   setImage(visualImage, "alt", data[index - 1].alt);
   //? 3. 비주얼이 변경되면 상단에 비주얼에 맞는 이름으로 변경해주세요.
   setNameText(nickName, data[index - 1].name);
-  //? 5.오디오 변경
+  //? 4.오디오 변경
   handleAudio(`./assets/audio/${data[index - 1].name}.m4a`);
 }
 
 //* naviagation에 클릭 이벤트
 navigation.addEventListener("click", handleSlider);
-
-//? 5. 함수를 분리시켜주세요.
-//? 1. `setBgColor` 함수
-//? 2. `setImage` 함수
-//? 3. `setNameText` 함수
-
-//? 6. 가독성이 좋은 코드로 리팩토링 해주세요.
