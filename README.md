@@ -31,6 +31,7 @@ const nickName = getNode(".nickName");
 let audioPlayer = new AudioPlayer(`./assets/audio/ember.m4a`);
 ```
 - `setBgColor` 함수
+-    1. 배경색 변경 ( colorB의 기본값은 `#000` 으로 한다 )
 ```js
 //!. `setBgColor` 함수
 function setBgColor(node, colorA, colorB = "#000") {
@@ -58,7 +59,7 @@ function setImage(node, prop, value) {
 
 ```
 
-- setNameText 함수
+- setNameText  함수
 ```js
 //!setNameText 함수
 function setNameText(node, value) {
@@ -74,6 +75,9 @@ function handleAudio(value) {
 }
 ```
 - navigattion 클릭하면 handleSlider 실행
+1. 이미지와 색상의 데이터는 `data.js` 에서 불러옴
+2. 각 li 항목들을 클릭하면 배경 색상과 메인 비주얼 이미지를 변경
+- 
 ```js
 //! navigattion 클릭하면 handleSlider 실행
 function handleSlider(e) {
@@ -94,7 +98,7 @@ function handleSlider(e) {
   target.alt = data.alt;
   target.nickName = data.name;
 
-  //? 1. 배경색 변경 ( colorB의 기본값은 `#000` 으로 한다 )
+  //? 1. 배경색 변경 ( colorB의 기본값은 `#000`)
   setBgColor(body, data[index - 1].color[0], data[index - 1].color[1]);
   //? 2. 이미지 변경
   setImage(visualImage, "src", `./assets/${data[index - 1].name}.jpeg`);
@@ -119,7 +123,7 @@ navigation.addEventListener("click", handleSlider);
 ---
 
 
-- addEventListener에 대한 학습이 더욱 필요한거 같다.
+
 ```js
 
 ```
@@ -129,30 +133,11 @@ navigation.addEventListener("click", handleSlider);
 1. 이벤트 처리 방식을 사용하여 클릭 이벤트를 걸어주세요.
    1. 이벤트 위임
    2. 반복문
-2. 이미지와 색상의 데이터는 `data.js` 에서 불러와주세요.
-3. 각 li 항목들을 클릭하면 배경 색상과 메인 비주얼 이미지를 변경해주세요.
 
-   1. 배경색 변경 ( colorB의 기본값은 `#000` 으로 한다 )
 
-   ```jsx
-   elem.style.background = `linear-gradient(to bottom, 'colorA','colorB')`;
-   ```
 
-   b. 이미지 변경
 
    ```jsx
-   target.src = `./assets/${data.name}.jpeg`;
-   target.alt = data.alt;
-   ```
+   elem.style.background = `linear-gradient(to bottom, 'colorA','colorB
 
-4. 비주얼이 변경되면 상단에 비주얼에 맞는 이름으로 변경해주세요.
 
-   ```jsx
-   target.textContent = data.name;
-   ```
-
-5. 함수를 분리시켜주세요.
-   1. `setBgColor` 함수
-   2. `setImage` 함수
-   3. `setNameText` 함수
-6. 가독성이 좋은 코드로 리팩토링 해주세요.
