@@ -82,6 +82,7 @@ function handleAudio(value) {
 }
 ```
 <br/>
+
 ### `handleSlider`  함수
 navigattion 클릭하면 handleSlider 실행
 - 이미지와 색상의 데이터는 `data.js` 에서 불러옴
